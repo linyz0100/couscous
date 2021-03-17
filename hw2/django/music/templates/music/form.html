@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    	<title>Hw2</title>
+			{% load static %}
+      <link rel="stylesheet" href="{% static 'music/form.css' %}">
+	</head>
+
+	<body>
+		<!-- interface -->
+			<div class="form-container">
+		      <div class="form-title">
+		          <h1>Music Database</h1>
+		      </div>
+
+		      <form method="POST" action="{% url 'music:form1' %}">
+		      		{% csrf_token %}
+		          <div class="second-form">
+		              <h1>Retrieve songs by username</h1>
+		          </div>
+							<div class="info">
+				          <label for="username">Username: </label>
+				          <input type="text" name="username1">
+							</div>
+							<div class="button">
+				          <input type="submit" name="submit1">
+							</div>
+		      </form>
+
+		      <form method="POST" action="{% url 'music:form2' %}">
+		      {% csrf_token %}
+		          <div class="second-form">
+		              <h1>Retrieve genre by song</h1>
+		          </div>
+							<div class="info">
+				          <label for="song">Song: </label>
+				          <input type="text" name="song1">
+							</div>
+							<div class="button">
+				          <input type="submit" name="submit2">
+							</div>
+		      </form>
+
+		      <br><br>
+		      <a href="{% url 'music:index' %}">Main Page</a>
+
+		      <ul>
+		      {% if selected_user %}
+		          {% for rating_table in selected_user.rating_set.all %}
+		              <li>{{ rating_table.song }} -> {{ rating_table.rating }}</li>
+		          {% endfor %}
+		      {% endif %}
+		      </ul>
+
+		      <ul>
+		      {% if selected_song %}
+		          <li>{{ selected_song.song }} -> {{ selected_song.genre }} -> {{ selected_song.release_date }}</li>
+		      {% endif %}
+		      </ul>
+
+
+
+
+
+
+			</div>
+
+
+	</body>
+
+
+
+
+
+
+
+
+
+</html>

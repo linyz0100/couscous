@@ -1,0 +1,50 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+CREATE DATABASE IF NOT EXISTS `music-db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `music-db`;
+
+CREATE TABLE `artists` (
+  `song` varchar(255) NOT NULL,
+  `artist` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `artists` (`song`, `artist`) VALUES
+('Days of Wine and Roses', 'Bill Evans'),
+('Freeway', 'Aimee Mann'),
+('These Walls', 'Kendrick Lamar');
+
+CREATE TABLE `ratings` (
+  `username` varchar(255) NOT NULL,
+  `song` varchar(255) NOT NULL,
+  `rating` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `ratings` (`username`, `song`, `rating`) VALUES
+('Amelia-Earhart', 'Days of Wine and Roses', 4),
+('Amelia-Earhart', 'Freeway', 3),
+('Amelia-Earhart', 'These Walls', 4),
+('Otto', 'Days of Wine and Roses', 5);
+
+CREATE TABLE `users` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `users` (`username`, `password`) VALUES
+('Amelia-Earhart', 'Youaom139&yu7'),
+('Otto', 'StarWars2*');
+
+ALTER TABLE `artists`
+  ADD PRIMARY KEY (`song`);
+
+ALTER TABLE `ratings`
+  ADD PRIMARY KEY (`username`,`song`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
+
+ALTER TABLE `ratings`
+  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;

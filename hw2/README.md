@@ -1,0 +1,3 @@
+Lin: I worked on the backend aspect of the project. Manipulating the data from the user to the database and vice versa by being able to access to the users ratings to certain songs based on the username and retrieving the genres and release date of the song by the same manner.
+
+Charlie: I worked on the frontend aspect of the project. Creating the three pages which the user has access to. This includes a sign up form which saves a new user to the database and prints out the data of the user. Besides the frontend, I helped Lin in the backend by creating models and views functions which allows the form to send a new user to the database.
