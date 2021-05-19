@@ -1,3 +1,4 @@
 # couscous
-Comp 333 Hw1
+Wesleyan University
+Comp 333 Homework
 https://linyz0100.github.io/couscous/
